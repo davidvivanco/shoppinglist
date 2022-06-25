@@ -1,0 +1,22 @@
+ion-header {
+    ion-title {
+        padding-left: 0;
+    }
+}
+
+ion-checkbox {
+    margin-right: 20px;
+    position: relative;
+}
+
+
+.notifications {
+    position: relative;
+
+    ion-badge {
+        position: absolute;
+        left: 10px;
+        font-size: 7px;
+        font-weight: bold;
+    }
+}

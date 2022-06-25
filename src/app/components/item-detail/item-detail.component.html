@@ -1,0 +1,52 @@
+<ion-content class="modal">
+  <ion-list lines="full" class="ion-no-margin modal__list" style="padding: 20px;">
+    <form *ngIf="formGroup" [formGroup]="formGroup">
+      <ion-item>
+        <ion-label position="stacked">Descripción</ion-label>
+        <ion-textarea formControlName="description" [value]="item?.name"></ion-textarea>
+      </ion-item>
+    </form>
+    <ion-button [disabled]="formGroup.invalid" (click)="(item)" (click)="addItem()" *ngIf="!item?.name"
+      class="modal__btn" expand="block">
+      Guardar</ion-button>
+    <ion-button [disabled]="formGroup.invalid" (click)="updateItem(item)" *ngIf="item?.name" class="modal__btn"
+      expand="block">Editar</ion-button>
+  </ion-list>
+  <ion-card class="modal__card" *ngIf="item">
+    <ion-item>
+      <ion-icon color="secondary" name="information-circle" slot="start"></ion-icon>
+      <ion-label>INFORMACIÓN</ion-label>
+      <ion-button (click)="helper.setUrgency(item,list,userLogged)" [color]="item?.urgent ? 'danger' :'medium'"
+        fill="outline" slot="end">Urgente
+      </ion-button>
+    </ion-item>
+    <ion-card-content class="modal__detail">
+      <ion-label><strong>Detalle:</strong>
+        <span *ngIf="item.detail"> {{item.detail}}</span>
+        <span *ngIf="!item.detail"> No hay detalle.</span>
+        <ion-text *ngIf="item.detail" class="edit-detail ion-activatable ripple-parent" color="secondary">Editar detalle
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-text>
+        <ion-text *ngIf="!item.detail" class="add-detail ion-activatable ripple-parent" color="secondary">Añadir detalle
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-text>
+      </ion-label>
+    </ion-card-content>
+
+
+    <ion-card-content>
+      <p>
+        <strong>Fecha creación:</strong> {{item?.createdAt.toMillis() | date}}
+      </p>
+      <p>
+        <strong>Creado por:</strong> {{users[item?.user]}}
+      </p>
+      <p>
+        <strong> Última vez editado:</strong> {{helper.getDateFromNow(item)}}
+      </p>
+      <p>
+        <strong> Última vez editado por:</strong> davidvivanco
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-content>
+
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <h1>La lista de la compra</h1>
+      <ion-icon color="primary" name="cart"></ion-icon>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-list>
+        <form [formGroup]="formGroup">
+
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+        </form>
+
+      </ion-list>
+    </ion-row>
+    <ion-button [disabled]="formGroup.invalid" (click)="onLogin()" expand="block">Entrar</ion-button>
+  </ion-grid>
+</ion-content>

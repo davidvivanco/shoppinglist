@@ -1,0 +1,33 @@
+
+ion-checkbox {
+    margin-right: 20px;
+    position: relative;
+}
+
+
+.label {
+    h2,
+    h3,
+    p {
+        margin: 0;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
+
+.urgent-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    span {
+        margin-right: 3px;
+    }
+}
+
+
+

@@ -1,0 +1,18 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-title>Lista de la compra</ion-title>
+      <ion-avatar slot="start">
+        <img src="assets/images/avatar.png">
+      </ion-avatar>
+      <ion-buttons slot="end">
+        <ion-button (click)="goToNotifications()">
+          <div class="notifications">
+            <ion-icon color="dark" slot="icon-only" name="notifications-outline"></ion-icon>
+            <ion-badge *ngIf="state.newNotifications" color="danger">{{state.totalNotifications}}</ion-badge>
+          </div>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>

@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="loading">
+    <ion-item *ngFor="let item of items || [].constructor(9)">
+      <ion-checkbox mode="ios" slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-checkbox>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!loading">
+    <ion-item-sliding #slidingItem *ngFor="let item of items;let i = index; ">
+      <ion-item>
+        <ion-checkbox (ionChange)="toggleIonCheck($event,item)" [checked]="item.checked" mode="ios" slot="start">
+        </ion-checkbox>
+        <ion-label class="label" (click)="openDetailModal(item ,slidingItem)">
+          <h2>{{item.name | titlecase}}</h2>
+          <p>{{item.createdAt.toMillis() | date:'d MMMM, y'}} - {{users[item.user]}}</p>
+        </ion-label>
+        <ion-badge *ngIf="item.urgent" class="urgent-badge" mode="ios" outline color="danger">
+          <span>urgente</span>
+          <ion-icon name="warning"></ion-icon>
+        </ion-badge>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option id="open-modal" expand="block" (click)="openDetailModal(item,slidingItem)">
+          <ion-icon color="secondary" name="pencil-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="deleteItem(item,i,slidingItem)">
+          <ion-icon color="primary" name="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="helper.setUrgency(item,list,userLogged,slidingItem)">
+          <ion-icon color="light" name="warning"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+</ion-content>

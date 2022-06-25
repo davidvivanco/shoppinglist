@@ -1,0 +1,31 @@
+.modal {
+    &__detail {
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        .edit-detail,
+        .add-detail {
+            font-weight: 800;
+        }
+
+        .add-detail {
+            margin-left: 10px;
+        }
+    }
+
+    &__list {
+
+        ion-item:nth-child(1),
+        ion-item:nth-child(2) {
+            margin-top: 10px;
+        }
+    }
+
+    &__btn {
+        margin-top: 50px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--ion-color-secondary);
+    }
+
+}
